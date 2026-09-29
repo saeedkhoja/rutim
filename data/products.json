@@ -1,0 +1,88 @@
+{
+  "source": "https://uzum.uz/ru/shop/rutim1",
+  "brand": "RUTIM",
+  "seller": "\"INNOVATION TEXNO SERVICE\" MCHJ",
+  "note": "Narxlar ataylab olinmadi — faqat ma'lumot uchun.",
+  "series": {
+    "RRC95": {
+      "type": "Релейный",
+      "summary": "Однофазный релейный стабилизатор. Выход 220 В ±10%, 50/60 Гц, цифровой LED-дисплей (вход/выход), режим Bypass, принудительное охлаждение вентиляторами.",
+      "protection": ["Повышенное напряжение", "Пониженное напряжение", "Перегрузка", "Короткое замыкание"],
+      "advantages": [
+        "Широкий диапазон входного напряжения — стабильная работа при значительных перепадах в сети",
+        "Стабильное выходное напряжение 220 В — безопасная и бесперебойная работа устройств",
+        "Быстрая релейная стабилизация — мгновенная реакция на изменения напряжения",
+        "LED-дисплей — входное и выходное напряжение в реальном времени",
+        "Режим Bypass — питание напрямую от сети при необходимости",
+        "Эффективное вентиляторное охлаждение при длительных нагрузках"
+      ],
+      "applications": ["Кондиционеры", "Холодильники и морозильные камеры", "Насосное оборудование", "Компьютеры и серверное оборудование", "Телевизоры", "Электроинструменты", "Офисная техника", "Торговое и производственное оборудование"]
+    },
+    "RRC45": {
+      "type": "Релейный",
+      "summary": "Высокомощный однофазный релейный стабилизатор со сверхшироким входным диапазоном 45–280 В. Выход 220 В, 50/60 Гц, LED-дисплей, КПД >95%, IP20, гарантия 12 месяцев.",
+      "protection": ["Перегрузка", "Высокое и низкое напряжение", "Короткое замыкание"],
+      "advantages": [
+        "Сверхширокий диапазон входного напряжения 45–280 В",
+        "Быстрая релейная стабилизация напряжения",
+        "Цифровой LED-дисплей (вход/выход)",
+        "Принудительное вентиляторное охлаждение",
+        "Высокий КПД >95%"
+      ],
+      "applications": ["Кондиционеры", "Холодильники и морозильные камеры", "Насосное оборудование", "Сварочное оборудование (в зависимости от мощности)", "Компьютеры и серверное оборудование", "Телевизоры", "Медицинское и лабораторное оборудование", "Производственное и промышленное оборудование"],
+      "objects": ["Дома", "Офисы", "Магазины", "Мастерские", "Производственные объекты"]
+    },
+    "RTC": {
+      "type": "Автоматический (AVR)",
+      "summary": "Однофазный автоматический стабилизатор напряжения с точным выходом 220 В ±5%, 50/60 Гц, LED-дисплей, принудительное охлаждение.",
+      "protection": ["Повышенное напряжение", "Пониженное напряжение", "Перегрузка", "Короткое замыкание", "Перегрев"],
+      "advantages": [
+        "Точное выходное напряжение 220 В ±5%",
+        "Защита электроприборов от скачков, перепадов и перегрузок",
+        "Высокая мощность — одновременное подключение множества устройств",
+        "Надёжное охлаждение при длительной нагрузке",
+        "Цифровой дисплей для контроля состояния сети",
+        "Для дома, офиса, торговых точек, мастерских, серверных и производства"
+      ],
+      "applications": ["Кондиционеры", "Холодильники и морозильные камеры", "Насосное оборудование", "Компьютеры и серверное оборудование", "Телевизоры", "Электроинструменты", "Офисная техника", "Производственное и промышленное оборудование"]
+    }
+  },
+  "products": [
+    { "id": "3248639", "model": "RRC95-500VA",  "series": "RRC95", "powerVA": 500,   "input": "95–270 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-500VA (95-270)",  "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc95500va-95270-3248639",
+      "images": ["da5vf3dmapk18aqo09hg","da5vf3dmapk18aqo09gg","da5vf3dmapk18aqo09h0","da5vf3dmapk18aqo09j0","da5vf39e6ph0vlhri2ug","da5vf3dmapk18aqo09ig","da5vf3dmapk18aqo09jg","da5vf35mapk18aqo09g0","da5vf3dmapk18aqo09i0"] },
+    { "id": "3248844", "model": "RRC95-1000VA", "series": "RRC95", "powerVA": 1000,  "input": "95–270 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-1000VA (95-270)", "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-3248844",
+      "images": ["da6048fncsnbbghq8jf0","da6048fncsnbbghq8jeg","da60489e6ph0vlhrilpg","da6048dmapk18aqo0sh0","da6048fncsnbbghq8jgg","da6048fncsnbbghq8jg0","da6048dmapk18aqo0shg","da6048fncsnbbghq8jfg"] },
+    { "id": "3249109", "model": "RRC95-1500VA", "series": "RRC95", "powerVA": 1500,  "input": "95–270 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-1500VA (95-270)", "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-3249109",
+      "images": ["da60rihe6ph0vlhrjckg","da60rinncsnbbghq9aog","da60rinncsnbbghq9ap0","da60rilmapk18aqo1kqg","da60rinncsnbbghq9apg","da60rihe6ph0vlhrjclg","da60rinncsnbbghq9aq0","da60rihe6ph0vlhrjcl0"] },
+    { "id": "3249149", "model": "RRC95-2000VA", "series": "RRC95", "powerVA": 2000,  "input": "95–270 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-2000VA (95-270)", "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-3249149",
+      "images": ["da60vdnncsnbbghq9ej0","da60vdpe6ph0vlhrjgng","da60vdnncsnbbghq9ejg","da60vdvncsnbbghq9ekg","da60vdnncsnbbghq9ek0","da60ve1e6ph0vlhrjgo0","da60ve1e6ph0vlhrjgog","da60vdtmapk18aqo1om0"] },
+    { "id": "3252888", "model": "RRC95-3000VA", "series": "RRC95", "powerVA": 3000,  "input": "95–270 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-3000VA (95-270)", "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-3252888",
+      "images": ["da6hs7he6ph0vlhrqgfg","da6hs7h9v16sekurha6g","da6hs7he6ph0vlhrqgf0","da6hs7h9v16sekurha70","da6hs7he6ph0vlhrqgh0","da6hs7he6ph0vlhrqggg","da6hs7he6ph0vlhrqgg0"] },
+    { "id": "3248291", "model": "RRC95-5KVA",   "series": "RRC95", "powerVA": 5000,  "input": "95–280 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-5KVA (95-280)",   "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc955kva-95280-3248291",
+      "images": ["da5ufgdmapk18aqnvg30","da5ufgdmapk18aqnvg20","da5ufgfncsnbbghq77v0","da5ufgfncsnbbghq77vg","da5ufgdmapk18aqnvg2g","da5ufgfncsnbbghq7800","da5ufg9e6ph0vlhrh9ig"] },
+    { "id": "3248485", "model": "RRC95-10KVA",  "series": "RRC95", "powerVA": 10000, "input": "95–280 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-10KVA (95-280)",  "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc9510kva-95280-3248485",
+      "images": ["da5v149e6ph0vlhrhnk0","da5v149e6ph0vlhrhnjg","da5v14dmapk18aqnvtvg","da5v149e6ph0vlhrhnkg","da5v14fncsnbbghq7lk0","da5v14he6ph0vlhrhnlg","da5v14he6ph0vlhrhnl0"] },
+    { "id": "3053037", "model": "RRC95-15KVA",  "series": "RRC95", "powerVA": 15000, "input": "95–280 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-15KVA (95-280)",  "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc9515kva-95280-3053037",
+      "images": ["d9auhkk9g1ku9j5j56ag","d9auhks9g1ku9j5j56b0","d9auhki1146g73hsks60","d9auhkq1146g73hsks6g","d9auhkrsv8vsdeu932eg","d9auhkrsv8vsdeu932e0"] },
+    { "id": "3248553", "model": "RRC95-20KVA",  "series": "RRC95", "powerVA": 20000, "input": "95–280 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-20KVA (95-280)",  "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc9520kva-95280-3248553",
+      "images": ["da5v7atmapk18aqo02tg","da5v7avncsnbbghq7rbg","da5v7avncsnbbghq7rc0","da5v7atmapk18aqo02u0","da5v7avncsnbbghq7rdg","da5v7ape6ph0vlhrhss0","da5v7ape6ph0vlhrhsrg","da5v7avncsnbbghq7rd0"] },
+    { "id": "3053622", "model": "RRC95-30KVA",  "series": "RRC95", "powerVA": 30000, "input": "95–280 В",  "output": "220 В ±10%", "name": "Стабилизатор напряжения RUTIM RRC95-30KVA (95-280)",  "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc9530kva-95280-3053622",
+      "images": ["d9avv0c9g1ku9j5j6b6g","d9avv0bsv8vsdeu946gg","d9avv0c9g1ku9j5j6b70","d9avv0c9g1ku9j5j6b7g","d9avv03sv8vsdeu946g0"] },
+    { "id": "3052723", "model": "RRC45-5KVA",   "series": "RRC45", "powerVA": 5000,  "input": "45–280 В",  "output": "220 В",      "name": "Стабилизатор напряжения RUTIM RRC45-5KVA (45-280)",   "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc455kva-45280-3052723",
+      "images": ["d9athibsv8vsdeu9299g","d9athic9g1ku9j5j4cpg","d9athic9g1ku9j5j4cq0","d9athii1146g73hsk4ag","d9athii1146g73hsk4b0","d9athii1146g73hsk4bg","d9athibsv8vsdeu929a0"] },
+    { "id": "3052630", "model": "RRC45-10KVA",  "series": "RRC45", "powerVA": 10000, "input": "45–280 В",  "output": "220 В",      "name": "Стабилизатор напряжения RUTIM RRC45-10KVA (45-280)",  "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc4510kva-45280-3052630",
+      "images": ["d9at9c3sv8vsdeu923n0","d9at9c49g1ku9j5j474g","d9at9c3sv8vsdeu923mg","d9at9c21146g73hsjv70","d9at9c3sv8vsdeu923ng","d9at9c49g1ku9j5j4750","d9at9c21146g73hsjv6g"] },
+    { "id": "3052411", "model": "RRC45-15KVA",  "series": "RRC45", "powerVA": 15000, "input": "45–280 В",  "output": "220 В",      "name": "Стабилизатор напряжения RUTIM RRC45-15KVA (45-280)",  "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc4515kva-45280-3052411",
+      "images": ["d9aseorsv8vsdeu91kbg","d9aseoq1146g73hsjh8g","d9aseoq1146g73hsjh80","d9aseoq1146g73hsjh90","d9aseos9g1ku9j5j3p9g","d9aseos9g1ku9j5j3p90","d9aseos9g1ku9j5j3p8g"] },
+    { "id": "3052329", "model": "RRC45-20KVA",  "series": "RRC45", "powerVA": 20000, "input": "45–280 В",  "output": "220 В",      "name": "Стабилизатор напряжения RUTIM RRC45-20KVA (45-280)",  "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc4520kva-45280-3052329",
+      "images": ["d9arvqq1146g73hsjao0","d9arvti1146g73hsjapg","d9arvtq1146g73hsjaq0","d9arvts9g1ku9j5j3ipg","d9arvtq1146g73hsjaqg","d9arvtq1146g73hsjar0","d9arvts9g1ku9j5j3iq0"] },
+    { "id": "3052559", "model": "RRC45-30KVA",  "series": "RRC45", "powerVA": 30000, "input": "45–280 В",  "output": "220 В",      "name": "Стабилизатор напряжения RUTIM RRC45-30KVA (45-280)",  "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rrc4530kva-45280-3052559",
+      "images": ["d9at29k9g1ku9j5j42ag","d9at29i1146g73hsjr10","d9at29bsv8vsdeu91uj0","d9at29jsv8vsdeu91ukg","d9at29bsv8vsdeu91uig","d9at29jsv8vsdeu91ujg","d9at29jsv8vsdeu91uk0"] },
+    { "id": "3052805", "model": "RTC-15KVA",    "series": "RTC",   "powerVA": 15000, "input": "105–273 В", "output": "220 В ±5%",  "name": "Стабилизатор напряжения RUTIM RTC-15KVA (105-273)",   "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rtc15kva-105273-3052805",
+      "images": ["d9atrtc9g1ku9j5j4li0","d9atrta1146g73hskbvg","d9atrtc9g1ku9j5j4lig","d9atrtc9g1ku9j5j4lj0","d9atrtk9g1ku9j5j4ljg"] },
+    { "id": "3052900", "model": "RTC-20KVA",    "series": "RTC",   "powerVA": 20000, "input": "105–273 В", "output": "220 В ±5%",  "name": "Стабилизатор напряжения RUTIM RTC-20KVA (105-273)",   "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rtc20kva-105273-3052900",
+      "images": ["d9au5rq1146g73hskjbg","d9au5rs9g1ku9j5j4t50","d9au5rq1146g73hskjb0","d9au5rs9g1ku9j5j4t60","d9au5s21146g73hskjc0","d9au5s3sv8vsdeu92p80","d9au5rs9g1ku9j5j4t5g"] },
+    { "id": "3052954", "model": "RTC-30KVA",    "series": "RTC",   "powerVA": 30000, "input": "105–273 В", "output": "220 В ±5%",  "name": "Стабилизатор напряжения RUTIM RTC-30KVA (105-273)",   "url": "https://uzum.uz/ru/product/stabilizator-napryazheniya-rutim-rtc30kva-105273-3052954",
+      "images": ["d9aub1jsv8vsdeu92t0g","d9aub1k9g1ku9j5j50ng","d9aub1i1146g73hskmpg","d9aub1q1146g73hskmq0","d9aub1s9g1ku9j5j50o0","d9aub1i1146g73hskmp0","d9aub1jsv8vsdeu92t10"] }
+  ]
+}
