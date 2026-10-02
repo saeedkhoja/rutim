@@ -1,32 +1,53 @@
-// Arizani Telegram botga yuboradi. Token faqat serverda saqlanadi (brauzerga chiqmaydi).
+// Arizani tekshiradi va menejerlar Telegram chatiga bot orqali yuboradi.
+// Token faqat serverda saqlanadi (brauzerga chiqmaydi).
 const esc = (s = '') => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
+const str = (v, max) => String(v || '').trim().slice(0, max)
+
+export function parseLead(body) {
+  const lead = {
+    name: str(body?.name, 60),
+    phone: str(body?.phone, 30),
+    shop: str(body?.shop, 120),
+    city: str(body?.city, 60),
+    type: str(body?.type, 60),
+    model: str(body?.model, 40),
+    lang: str(body?.lang, 5),
+    page: str(body?.page, 200),
+    utm: str(body?.utm, 200),
+  }
+  const ok = lead.name.length >= 2 && lead.phone.replace(/\D/g, '').length === 12
+    && lead.shop.length >= 2 && lead.city && lead.type
+  return ok ? lead : null
+}
+
+export function leadMessage(l) {
+  const lines = [
+    '<b>🔌 Yangi ariza — RUTIM</b>',
+    '',
+    `👤 <b>${esc(l.name)}</b>`,
+    `📞 ${esc(l.phone)}`,
+    `🏪 ${esc(l.shop)}`,
+    `📍 ${esc(l.city)}`,
+    `🤝 ${esc(l.type)}`,
+  ]
+  if (l.model) lines.push(`📦 ${esc(l.model)}`)
+  lines.push('', `🌐 ${esc(l.lang)} · ${esc(l.page)}`)
+  if (l.utm) lines.push(`📊 ${esc(l.utm)}`)
+  return lines.join('\n')
+}
 
 export async function handleLead(body, env) {
+  const lead = parseLead(body)
+  if (!lead) return { status: 400, json: { ok: false, error: 'invalid' } }
+
   const token = env.TELEGRAM_BOT_TOKEN
   const chatId = env.TELEGRAM_CHAT_ID
-  if (!token || !chatId) return { status: 503, json: { ok: false, error: 'not_configured' } }
-
-  const name = String(body?.name || '').trim().slice(0, 60)
-  const phone = String(body?.phone || '').trim().slice(0, 30)
-  if (name.length < 2 || phone.replace(/\D/g, '').length < 12) {
-    return { status: 400, json: { ok: false, error: 'invalid' } }
-  }
-
-  const items = Array.isArray(body.items) ? body.items.slice(0, 30) : []
-  const lines = ['<b>🔌 Yangi B2B ariza — RUTIM</b>', '', `👤 <b>${esc(name)}</b>`, `📞 ${esc(phone)}`]
-  if (body.shop) lines.push(`🏪 ${esc(String(body.shop).slice(0, 120))}`)
-  if (body.payModel) lines.push(`🤝 ${esc(String(body.payModel).slice(0, 60))}`)
-  if (items.length) {
-    lines.push('', '<b>📦 Tanlangan modellar:</b>')
-    items.forEach((i) => lines.push(`• ${esc(String(i.model).slice(0, 40))} × ${Number(i.qty) || 1}`))
-  }
-  lines.push('', `🌐 ${esc(body.lang || '')} · ${esc(String(body.page || '').slice(0, 200))}`)
-  if (body.utm) lines.push(`📊 ${esc(String(body.utm).slice(0, 200))}`)
+  if (!token || !chatId) return { status: 503, json: { ok: false, error: 'not_configured' }, lead }
 
   const r = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chatId, text: lines.join('\n'), parse_mode: 'HTML', disable_web_page_preview: true }),
+    body: JSON.stringify({ chat_id: chatId, text: leadMessage(lead), parse_mode: 'HTML', disable_web_page_preview: true }),
   })
   if (!r.ok) return { status: 502, json: { ok: false, error: 'telegram' } }
   return { status: 200, json: { ok: true } }

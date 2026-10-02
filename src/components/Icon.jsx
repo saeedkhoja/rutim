@@ -29,16 +29,10 @@ const P = {
   phone: 'M5 3h4l2 5-2.5 1.5a11 11 0 006 6L16 13l5 2v4a2 2 0 01-2 2A17 17 0 013 5a2 2 0 012-2z',
   box: 'M3 7.5L12 3l9 4.5v9L12 21l-9-4.5v-9zM3 7.5l9 4.5 9-4.5M12 12v9',
   user: 'M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0',
+  chat: 'M4 5h16v11H9l-5 4V5zM8 9.5h8M8 12.5h5',
 }
 
 export default function Icon({ name, size = 20, className, strokeWidth = 1.8 }) {
-  if (name === 'telegram') {
-    return (
-      <svg className={className} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
-        <path fill="currentColor" d="M21.4 4.1L2.9 11.3c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.4-1.5zM8.6 13.9l9.6-6c.5-.3.9-.1.5.2l-7.9 7.2-.3 3.3-1.9-4.7z" />
-      </svg>
-    )
-  }
   return (
     <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
       strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

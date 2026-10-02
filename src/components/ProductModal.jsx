@@ -1,38 +1,31 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLang } from '../i18n'
-import { scrollToId, useStore } from '../store'
-import { byModel, powerLabel } from '../data/products'
+import { useLead } from '../store'
+import { byModel, fitKey, powerLabel } from '../data/products'
 import Icon from './Icon'
 
 function specRows(p, t) {
   const s = t.specs
   const rows = [
-    [s.series, p.series],
     [s.type, t.series[p.series].type],
     [s.power, p.va >= 5000 ? `${powerLabel(p.va)} (${p.va.toLocaleString('ru-RU')} VA)` : powerLabel(p.va)],
-    [s.phase, s.phaseV],
     [s.input, p.input],
     [s.output, p.output],
-    [s.freq, '50/60 Hz'],
     [s.display, s.displayV],
   ]
   if (p.series === 'RRC95') rows.push([s.bypass, s.bypassV])
-  rows.push([s.cooling, s.coolingV])
-  if (p.series === 'RRC45') rows.push([s.eff, '>95%'], [s.ip, 'IP20'], [s.warranty, s.warrantyV])
   return rows
 }
 
 export default function ProductModal({ model, onClose }) {
   const { t } = useLang()
-  const { items, setQty } = useStore()
+  const { openLead } = useLead()
   const p = byModel[model]
   const ref = useRef(null)
   const [idx, setIdx] = useState(0)
-  const [qty, setQ] = useState(items[model] || 1)
 
   useEffect(() => {
-    const d = ref.current
-    d?.showModal()
+    ref.current?.showModal()
     document.body.classList.add('no-scroll')
     return () => document.body.classList.remove('no-scroll')
   }, [])
@@ -45,9 +38,10 @@ export default function ProductModal({ model, onClose }) {
     if (e.key === 'ArrowLeft') go(-1)
   }
 
-  const save = () => { setQty(model, qty); onClose() }
-  const ask = () => { setQty(model, qty); onClose(); setTimeout(() => scrollToId('lead'), 50) }
-  const inList = items[model] > 0
+  const ask = () => {
+    ref.current.close()
+    openLead({ model: p.model })
+  }
 
   return (
     <dialog ref={ref} className="modal" onClose={onClose} onKeyDown={onKey}
@@ -76,8 +70,8 @@ export default function ProductModal({ model, onClose }) {
         <div className="modal__info">
           <span className={`tag tag--${p.series}`}>{p.series} · {t.series[p.series].tag}</span>
           <h3 id="pm-title">RUTIM <span className="nowrap">{p.name}</span></h3>
-          <p className="modal__power">{powerLabel(p.va)} <span>· {p.input} → {p.output}</span></p>
-          <p className="modal__desc">{t.series[p.series].short}</p>
+          <p className="modal__power">{powerLabel(p.va)}</p>
+          <p className="modal__fit"><Icon name="check" size={16} strokeWidth={2.4} /> {t.products.fitFor}: {t.fit[fitKey(p.va)]}</p>
 
           <table className="specs">
             <tbody>
@@ -87,27 +81,13 @@ export default function ProductModal({ model, onClose }) {
 
           <h4>{t.specs.protection}</h4>
           <ul className="pills">{t.specs.protect[p.series].map((x) => <li key={x}><Icon name="shield" size={14} /> {x}</li>)}</ul>
-          <h4>{t.specs.usage}</h4>
-          <ul className="pills pills--soft">{t.specs.uses[p.series].map((x) => <li key={x}>{x}</li>)}</ul>
 
           <div className="modal__buy">
-            <div className="qty" aria-label={t.modal.qty}>
-              <button type="button" onClick={() => setQ((q) => Math.max(1, q - 1))} aria-label="-"><Icon name="minus" size={18} /></button>
-              <input type="number" min="1" max="999" value={qty} inputMode="numeric"
-                onChange={(e) => setQ(Math.max(1, Math.min(999, Number(e.target.value) || 1)))} aria-label={t.modal.qty} />
-              <button type="button" onClick={() => setQ((q) => Math.min(999, q + 1))} aria-label="+"><Icon name="plus" size={18} /></button>
-              <span>{t.modal.pcs}</span>
-            </div>
-            <button type="button" className="btn btn--dark" onClick={save}>
-              <Icon name="list" size={18} /> {inList ? t.modal.update : t.modal.add}
-            </button>
-            <button type="button" className="btn btn--primary" onClick={ask}>
+            <button type="button" className="btn btn--primary btn--lg btn--block" onClick={ask}>
               {t.modal.ask} <Icon name="arrow" size={18} />
             </button>
+            <p>{t.modal.askNote}</p>
           </div>
-          <a className="modal__uzum" href={p.uzumUrl} target="_blank" rel="noopener">
-            {t.modal.uzum} <Icon name="external" size={16} />
-          </a>
         </div>
       </div>
     </dialog>

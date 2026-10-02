@@ -1,6 +1,10 @@
-# RUTIM — B2B landing (React + Vite)
+# RUTIM — Instagram target uchun landing (React + Vite)
 
-Do‘konlar uchun B2B landing: stabilizatorlar shartnoma asosida beriladi (sotgandan keyin to‘lov, nasiya yoki ulgurji). Sayt ikki tilda ishlaydi: UZ va RU.
+Do‘kon va biznes egalariga taklif: stabilizatorlar sotuvdan keyin to‘lov, nasiya yoki ulgurji asosida.
+Saytning bitta maqsadi — tashrif buyuruvchi **ariza qoldirsin**. Sayt ikki tilda: UZ va RU.
+
+Sahifa tartibi: Taklif (hero) → Hamkorlik turlari → Mahsulotlar → Kimga foydali → 3 qadam → Ariza.
+Har bir "Ariza qoldirish" tugmasi bitta formani ochadi: ism, telefon, do‘kon nomi, shahar/viloyat, hamkorlik turi.
 
 ## Ishga tushirish
 
@@ -10,18 +14,20 @@ npm run dev        # http://localhost:5173
 npm run build      # tayyor sayt dist/ papkasiga yig‘iladi
 ```
 
+Lokal rejimda bot sozlanmagan bo‘lsa, arizalar `leads.local.jsonl` fayliga yoziladi (formani sinash uchun).
+
 ## Sozlash — `.env`
 
 `.env.example` faylini `.env` nomi bilan nusxalang:
 
 | O‘zgaruvchi | Nima uchun |
 |---|---|
-| `VITE_TELEGRAM_USERNAME` | "Telegram’da yozish" tugmalari ochadigan akkaunt (@ belgisisiz) |
-| `VITE_PHONE` | Saytda ko‘rsatiladigan telefon (ixtiyoriy) |
-| `TELEGRAM_BOT_TOKEN` | Ariza formasi yuboradigan bot (@BotFather orqali yaratiladi) |
+| `TELEGRAM_BOT_TOKEN` | Arizalar menejerlar chatiga shu bot orqali keladi (@BotFather) |
 | `TELEGRAM_CHAT_ID` | Arizalar keladigan chat yoki guruh ID |
+| `VITE_PHONE` | Saytda ko‘rsatiladigan telefon (ixtiyoriy) |
+| `VITE_META_PIXEL_ID` | Instagram reklamasi uchun Meta Pixel — ariza yuborilganda `Lead` hodisasi (ixtiyoriy) |
 
-Bot sozlanmagan bo‘lsa ham forma ishlaydi: mijozga tayyor matn bilan Telegram chatni ochish taklif qilinadi.
+Reklama havolasiga UTM qo‘shsangiz (`?utm_source=instagram&utm_campaign=...`), u arizada ko‘rinadi.
 
 ## Deploy
 
@@ -31,7 +37,8 @@ Bot sozlanmagan bo‘lsa ham forma ishlaydi: mijozga tayyor matn bilan Telegram 
 ## Tuzilma
 
 - `src/i18n.jsx` — barcha matnlar (UZ/RU)
-- `src/config.js` — kontaktlar va kompaniya ma’lumotlari
-- `data/products.json` — Uzum’dan olingan 18 ta mahsulot (narxlarsiz)
-- `src/data/products.js` — katalog, tayyor to‘plamlar, kalkulyator uchun ma’lumotlar
+- `src/config.js` — telefon, Pixel, kompaniya ma’lumotlari
+- `src/components/LeadModal.jsx` — ariza formasi
+- `src/data/cities.js` — shahar/viloyat ro‘yxati
+- `data/products.json` — 18 ta mahsulot (narxlarsiz)
 - `public/products/` — optimallashtirilgan rasmlar (`assets/products/` — asl nusxalar)

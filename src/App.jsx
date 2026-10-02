@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import { Demand, Faq, How, Offer, Pain, Support, Who } from './components/Sections'
-import Catalog from './components/Catalog'
-import Kits from './components/Kits'
-import PowerCalc from './components/PowerCalc'
+import { FinalCta, How, Offer, Who } from './components/Sections'
+import Products from './components/Products'
 import ProductModal from './components/ProductModal'
-import LeadForm from './components/LeadForm'
-import { CartDrawer, Footer, MobileBar, Toast } from './components/Chrome'
+import LeadModal from './components/LeadModal'
+import { Footer, MobileBar } from './components/Chrome'
 
 export default function App() {
   const [active, setActive] = useState(null)
@@ -17,23 +15,16 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <Pain />
         <Offer />
-        <How />
+        <Products onOpen={setActive} />
         <Who />
-        <Catalog onOpen={setActive} />
-        <Kits onOpen={setActive} />
-        <PowerCalc onOpen={setActive} />
-        <Demand />
-        <Support />
-        <Faq />
-        <LeadForm />
+        <How />
+        <FinalCta />
       </main>
       <Footer />
-      <CartDrawer />
-      <Toast />
       <MobileBar />
       {active && <ProductModal key={active} model={active} onClose={() => setActive(null)} />}
+      <LeadModal />
     </>
   )
 }

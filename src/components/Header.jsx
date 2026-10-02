@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useLang } from '../i18n'
-import { scrollToId } from '../store'
-import { telegramLink } from '../config'
-import Icon from './Icon'
+import { scrollToId, useLead } from '../store'
 
-const LINKS = ['offer', 'how', 'catalog', 'kits', 'faq']
+const LINKS = ['offer', 'products', 'who']
 
 export default function Header() {
   const { t, lang, setLang } = useLang()
+  const { openLead } = useLead()
   const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 8)
@@ -20,12 +18,11 @@ export default function Header() {
 
   const go = (id) => (e) => {
     e.preventDefault()
-    setOpen(false)
     scrollToId(id)
   }
 
   return (
-    <header className={`header ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
+    <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="container header__row">
         <a href="#top" className="header__logo" onClick={go('top')} aria-label="RUTIM electric">
           <img src="/brand/logo-dark.png" alt="RUTIM electric" width="140" height="38" />
@@ -44,21 +41,8 @@ export default function Header() {
                 onClick={() => setLang(l)}>{l.toUpperCase()}</button>
             ))}
           </div>
-          <a className="btn btn--ghost btn--sm header__tg" href={telegramLink(t.lead.tgMsg)} target="_blank" rel="noopener">
-            <Icon name="telegram" size={18} /> <span>Telegram</span>
-          </a>
-          <a className="btn btn--primary btn--sm header__cta" href="#lead" onClick={go('lead')}>{t.nav.cta}</a>
-          <button type="button" className="header__burger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
-            <span /><span />
-          </button>
+          <button type="button" className="btn btn--primary btn--sm header__cta" onClick={() => openLead()}>{t.nav.cta}</button>
         </div>
-      </div>
-
-      <div className="header__mobile" hidden={!open}>
-        {LINKS.map((id) => (
-          <a key={id} href={`#${id}`} onClick={go(id)}>{t.nav[id]}</a>
-        ))}
-        <a className="btn btn--primary" href="#lead" onClick={go('lead')}>{t.nav.cta}</a>
       </div>
     </header>
   )
