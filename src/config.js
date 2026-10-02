@@ -6,8 +6,9 @@ export const CONFIG = {
   metaPixelId: import.meta.env.VITE_META_PIXEL_ID || '',
   company: '“INNOVATION TEXNO SERVICE” MCHJ',
   inn: '305616613',
-  // Ariza formasi shu endpointga yuboriladi (api/lead.js → Telegram bot, menejerga).
-  leadEndpoint: '/api/lead',
+  // Ariza formasi shu endpointga yuboriladi. Bo‘sh bo‘lsa — saytning o‘z api/lead.js funksiyasi;
+  // backend orqali yuborish uchun VITE_LEAD_ENDPOINT ga backend manzilini yozing (…/leads/rutim).
+  leadEndpoint: import.meta.env.VITE_LEAD_ENDPOINT || '/api/lead',
 }
 
 export const phoneHref = () => 'tel:' + CONFIG.phone.replace(/[^\d+]/g, '')

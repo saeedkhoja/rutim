@@ -24,6 +24,7 @@ Lokal rejimda bot sozlanmagan bo‘lsa, arizalar `leads.local.jsonl` fayliga yoz
 |---|---|
 | `TELEGRAM_BOT_TOKEN` | Arizalar menejerlar chatiga shu bot orqali keladi (@BotFather) |
 | `TELEGRAM_CHAT_ID` | Arizalar keladigan chat yoki guruh ID |
+| `VITE_LEAD_ENDPOINT` | Arizani backend orqali yuborish: `https://<backend>/leads/rutim` (ixtiyoriy; bo‘sh bo‘lsa `/api/lead`) |
 | `VITE_PHONE` | Saytda ko‘rsatiladigan telefon (ixtiyoriy) |
 | `VITE_META_PIXEL_ID` | Instagram reklamasi uchun Meta Pixel — ariza yuborilganda `Lead` hodisasi (ixtiyoriy) |
 
