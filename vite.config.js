@@ -1,4 +1,4 @@
-import { appendFileSync } from 'node:fs'
+import { appendFileSync, readFileSync } from 'node:fs'
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { handleLead } from './server/lead.js'
@@ -32,8 +32,21 @@ function leadApi(env) {
   }
 }
 
+// vercel.json dagi tashqi rewrite’lar (/api/leads/rutim → backend) `npm run preview` da ham ishlashi uchun
+function vercelProxy() {
+  try {
+    const { rewrites = [] } = JSON.parse(readFileSync('vercel.json', 'utf8'))
+    return Object.fromEntries(rewrites.filter((r) => /^https?:\/\//.test(r.destination)).map((r) => {
+      const to = new URL(r.destination)
+      return [r.source, { target: to.origin, changeOrigin: true, rewrite: () => to.pathname }]
+    }))
+  } catch {
+    return {}
+  }
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   // PIXEL_ID (Meta Pixel) brauzerga ochiq — u maxfiy emas
-  return { plugins: [react(), leadApi(env)], envPrefix: ['VITE_', 'PIXEL_ID'] }
+  return { plugins: [react(), leadApi(env)], envPrefix: ['VITE_', 'PIXEL_ID'], preview: { proxy: vercelProxy() } }
 })

@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/leads/rutim",
+      "destination": "https://staging.calora.uz/api/leads/rutim"
+    }
+  ]
+}
