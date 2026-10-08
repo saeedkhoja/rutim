@@ -7,32 +7,29 @@ export function parseLead(body) {
   const lead = {
     name: str(body?.name, 60),
     phone: str(body?.phone, 30),
-    shop: str(body?.shop, 120),
     city: str(body?.city, 60),
-    type: str(body?.type, 60),
+    shopType: str(body?.shopType, 60),
     model: str(body?.model, 40),
-    lang: str(body?.lang, 5),
-    page: str(body?.page, 200),
-    utm: str(body?.utm, 200),
+    page: str(body?.page, 300),
+    utm: str(body?.utm, 600),
   }
-  const ok = lead.name.length >= 2 && lead.phone.replace(/\D/g, '').length === 12
-    && lead.shop.length >= 2 && lead.city && lead.type
+  const ok = lead.name.length >= 2 && lead.phone.replace(/\D/g, '').length === 12 && lead.city
   return ok ? lead : null
 }
 
 export function leadMessage(l) {
   const lines = [
-    '<b>🔌 Yangi ariza — RUTIM</b>',
+    '<b>🔌 Yangi ariza — RUTIM diler narxlari</b>',
     '',
     `👤 <b>${esc(l.name)}</b>`,
     `📞 ${esc(l.phone)}`,
-    `🏪 ${esc(l.shop)}`,
     `📍 ${esc(l.city)}`,
-    `🤝 ${esc(l.type)}`,
+    `🏪 Do‘kon turi: ${esc(l.shopType || '—')}`,
   ]
-  if (l.model) lines.push(`📦 ${esc(l.model)}`)
-  lines.push('', `🌐 ${esc(l.lang)} · ${esc(l.page)}`)
-  if (l.utm) lines.push(`📊 ${esc(l.utm)}`)
+  if (l.model) lines.push(`🔋 Model: ${esc(l.model)}`)
+  lines.push('', `🌐 ${esc(l.page)}`)
+  const utm = [...new URLSearchParams(l.utm)]
+  if (utm.length) lines.push('📊 UTM:', ...utm.map(([k, v]) => `   ${esc(k)}: ${esc(v)}`))
   return lines.join('\n')
 }
 

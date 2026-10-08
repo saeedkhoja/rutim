@@ -1,15 +1,21 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react'
+import { track } from './pixel'
 
 const LeadCtx = createContext(null)
 
-// Ariza oynasi holati: null — yopiq, { type?, model? } — ochiq (oldindan tanlangan qiymatlar bilan)
+// Ariza formasini oldindan to‘ldirish: { model? }. requestLead formaga aylantiradi
+// va Meta Pixel’ga InitiateCheckout (diler narxiga qiziqish) hodisasini yuboradi.
 export function LeadProvider({ children }) {
-  const [lead, setLead] = useState(null)
+  const [prefill, setPrefill] = useState(null)
 
-  const openLead = useCallback((opts = {}) => setLead({ ...opts, at: Date.now() }), [])
-  const closeLead = useCallback(() => setLead(null), [])
+  const requestLead = useCallback((opts = {}) => {
+    track('InitiateCheckout', opts.model ? { content_name: opts.model } : undefined)
+    setPrefill({ ...opts, at: Date.now() })
+    // Modal yopilib, fokus qaytgandan keyin aylantiramiz
+    setTimeout(() => scrollToId('lead'), 60)
+  }, [])
 
-  const value = useMemo(() => ({ lead, openLead, closeLead }), [lead, openLead, closeLead])
+  const value = useMemo(() => ({ prefill, requestLead }), [prefill, requestLead])
   return <LeadCtx.Provider value={value}>{children}</LeadCtx.Provider>
 }
 

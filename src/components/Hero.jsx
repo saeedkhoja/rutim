@@ -1,14 +1,13 @@
-import { useLang } from '../i18n'
-import { useLead } from '../store'
+import { T } from '../copy'
+import { CONFIG } from '../config'
+import { scrollToId } from '../store'
 import Icon from './Icon'
 import VoltageMonitor from './VoltageMonitor'
 
-const POINT_ICONS = ['wallet', 'calendar', 'bolt']
+const BADGE_ICONS = ['tag', 'swap', 'truck']
 
 export default function Hero() {
-  const { t } = useLang()
-  const { openLead } = useLead()
-  const h = t.hero
+  const h = T.hero
 
   return (
     <section className="hero" id="top">
@@ -18,22 +17,23 @@ export default function Hero() {
           <h1 className="hero__title">
             {h.title1} <span className="accent">{h.title2}</span>
           </h1>
-          <p className="hero__lead">{h.lead}</p>
+          <p className="hero__lead"><Icon name="snow" size={18} className="hero__snow" />{h.lead}</p>
 
-          <ul className="hero__points">
-            {h.points.map((p, i) => (
-              <li key={p.t}>
-                <span className="hero__pi"><Icon name={POINT_ICONS[i]} size={22} /></span>
-                <span><b>{p.t}</b><small>{p.d}</small></span>
-              </li>
+          <ul className="hero__badges">
+            {h.badges.map((b, i) => (
+              <li key={b}><Icon name={BADGE_ICONS[i]} size={18} /> {b}</li>
             ))}
           </ul>
 
           <div className="hero__cta" id="hero-cta">
-            <button type="button" className="btn btn--primary btn--lg" onClick={() => openLead()}>
+            <a href="#lead" className="btn btn--primary btn--lg" onClick={(e) => { e.preventDefault(); scrollToId('lead') }}>
               {h.cta} <Icon name="arrow" size={18} />
-            </button>
-            <p className="hero__note"><Icon name="phone" size={15} /> {h.note}</p>
+            </a>
+            {CONFIG.telegramLink && (
+              <a href={CONFIG.telegramLink} className="btn btn--ghost btn--lg" target="_blank" rel="noopener noreferrer">
+                <Icon name="telegram" size={20} /> {h.telegram}
+              </a>
+            )}
           </div>
         </div>
 

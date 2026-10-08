@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useLang } from '../i18n'
-import { scrollToId, useLead } from '../store'
+import { T } from '../copy'
+import { scrollToId } from '../store'
 
-const LINKS = ['offer', 'products', 'who']
+const LINKS = ['about', 'calc', 'products', 'faq']
 
 export default function Header() {
-  const { t, lang, setLang } = useLang()
-  const { openLead } = useLead()
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -28,20 +26,14 @@ export default function Header() {
           <img src="/brand/logo-dark.png" alt="RUTIM electric" width="140" height="38" />
         </a>
 
-        <nav className="header__nav" aria-label="Main">
+        <nav className="header__nav" aria-label="Asosiy">
           {LINKS.map((id) => (
-            <a key={id} href={`#${id}`} onClick={go(id)}>{t.nav[id]}</a>
+            <a key={id} href={`#${id}`} onClick={go(id)}>{T.nav[id]}</a>
           ))}
         </nav>
 
         <div className="header__actions">
-          <div className="lang" role="group" aria-label="Language">
-            {['uz', 'ru'].map((l) => (
-              <button key={l} type="button" className={lang === l ? 'is-active' : ''} aria-pressed={lang === l}
-                onClick={() => setLang(l)}>{l.toUpperCase()}</button>
-            ))}
-          </div>
-          <button type="button" className="btn btn--primary btn--sm header__cta" onClick={() => openLead()}>{t.nav.cta}</button>
+          <a href="#lead" className="btn btn--primary btn--sm header__cta" onClick={go('lead')}>{T.nav.cta}</a>
         </div>
       </div>
     </header>

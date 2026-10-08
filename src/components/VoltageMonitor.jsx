@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useLang } from '../i18n'
+import { T } from '../copy'
 
 const N = 64
 const W = 320
@@ -38,7 +38,6 @@ const seed = () => {
 const path = (arr) => arr.map((v, i) => `${i ? 'L' : 'M'}${((i / (N - 1)) * W).toFixed(1)} ${y(v).toFixed(1)}`).join(' ')
 
 export default function VoltageMonitor() {
-  const { t } = useLang()
   const [input, setInput] = useState(seed)
   const [out, setOut] = useState(() => Array.from({ length: N }, () => 220))
   const st = useRef({ hold: 0, target: 0 })
@@ -58,17 +57,17 @@ export default function VoltageMonitor() {
   return (
     <div className="monitor" aria-hidden="true">
       <div className="monitor__head">
-        <span className="monitor__dot" /> {t.hero.monitorTitle}
+        <span className="monitor__dot" /> {T.hero.monitorTitle}
         <span className="monitor__live">LIVE</span>
       </div>
       <div className="monitor__values">
         <div>
-          <small>{t.hero.monitorIn}</small>
+          <small>{T.hero.monitorIn}</small>
           <b className={bad ? 'is-bad' : ''}>{vin}<i>V</i></b>
         </div>
         <div className="monitor__arrow">→</div>
         <div>
-          <small>{t.hero.monitorOut}</small>
+          <small>{T.hero.monitorOut}</small>
           <b className="is-good">220<i>V</i></b>
         </div>
       </div>
@@ -77,7 +76,7 @@ export default function VoltageMonitor() {
         <path d={path(input)} className="monitor__in" />
         <path d={path(out)} className="monitor__out" />
       </svg>
-      <div className="monitor__caption">{t.hero.monitorCaption}</div>
+      <div className="monitor__caption">{T.hero.monitorCaption}</div>
     </div>
   )
 }

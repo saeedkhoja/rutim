@@ -34,5 +34,6 @@ function leadApi(env) {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  return { plugins: [react(), leadApi(env)] }
+  // PIXEL_ID (Meta Pixel) brauzerga ochiq — u maxfiy emas
+  return { plugins: [react(), leadApi(env)], envPrefix: ['VITE_', 'PIXEL_ID'] }
 })

@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
-import { useLang } from '../i18n'
+import { T } from '../copy'
 import { useLead } from '../store'
 import { byModel, fitKey, powerLabel } from '../data/products'
 import Icon from './Icon'
 
-function specRows(p, t) {
-  const s = t.specs
+function specRows(p) {
+  const s = T.specs
   const rows = [
-    [s.type, t.series[p.series].type],
+    [s.type, T.series[p.series].type],
     [s.power, p.va >= 5000 ? `${powerLabel(p.va)} (${p.va.toLocaleString('ru-RU')} VA)` : powerLabel(p.va)],
     [s.input, p.input],
     [s.output, p.output],
@@ -18,8 +18,7 @@ function specRows(p, t) {
 }
 
 export default function ProductModal({ model, onClose }) {
-  const { t } = useLang()
-  const { openLead } = useLead()
+  const { requestLead } = useLead()
   const p = byModel[model]
   const ref = useRef(null)
   const [idx, setIdx] = useState(0)
@@ -40,22 +39,22 @@ export default function ProductModal({ model, onClose }) {
 
   const ask = () => {
     ref.current.close()
-    openLead({ model: p.model })
+    requestLead({ model: p.model })
   }
 
   return (
     <dialog ref={ref} className="modal" onClose={onClose} onKeyDown={onKey}
       onClick={(e) => { if (e.target === ref.current) ref.current.close() }} aria-labelledby="pm-title">
       <div className="modal__box">
-        <button type="button" className="modal__close" onClick={() => ref.current.close()} aria-label={t.modal.close}>
+        <button type="button" className="modal__close" onClick={() => ref.current.close()} aria-label={T.modal.close}>
           <Icon name="x" size={22} />
         </button>
 
         <div className="gallery">
           <div className="gallery__main">
             <img key={idx} src={p.images[idx].lg} alt={`RUTIM ${p.name} — ${idx + 1}/${n}`} width="900" height="1200" />
-            <button type="button" className="gallery__nav gallery__nav--prev" onClick={() => go(-1)} aria-label="Prev"><Icon name="left" size={22} /></button>
-            <button type="button" className="gallery__nav gallery__nav--next" onClick={() => go(1)} aria-label="Next"><Icon name="right" size={22} /></button>
+            <button type="button" className="gallery__nav gallery__nav--prev" onClick={() => go(-1)} aria-label="Oldingi rasm"><Icon name="left" size={22} /></button>
+            <button type="button" className="gallery__nav gallery__nav--next" onClick={() => go(1)} aria-label="Keyingi rasm"><Icon name="right" size={22} /></button>
             <span className="gallery__count">{idx + 1} / {n}</span>
           </div>
           <div className="gallery__thumbs">
@@ -68,25 +67,25 @@ export default function ProductModal({ model, onClose }) {
         </div>
 
         <div className="modal__info">
-          <span className={`tag tag--${p.series}`}>{p.series} · {t.series[p.series].tag}</span>
+          <span className={`tag tag--${p.series}`}>{p.series} · {T.series[p.series].tag}</span>
           <h3 id="pm-title">RUTIM <span className="nowrap">{p.name}</span></h3>
           <p className="modal__power">{powerLabel(p.va)}</p>
-          <p className="modal__fit"><Icon name="check" size={16} strokeWidth={2.4} /> {t.products.fitFor}: {t.fit[fitKey(p.va)]}</p>
+          <p className="modal__fit"><Icon name="check" size={16} strokeWidth={2.4} /> {T.products.fitFor}: {T.fit[fitKey(p.va)]}</p>
 
           <table className="specs">
             <tbody>
-              {specRows(p, t).map(([k, v]) => <tr key={k}><th>{k}</th><td>{v}</td></tr>)}
+              {specRows(p).map(([k, v]) => <tr key={k}><th>{k}</th><td>{v}</td></tr>)}
             </tbody>
           </table>
 
-          <h4>{t.specs.protection}</h4>
-          <ul className="pills">{t.specs.protect[p.series].map((x) => <li key={x}><Icon name="shield" size={14} /> {x}</li>)}</ul>
+          <h4>{T.specs.protection}</h4>
+          <ul className="pills">{T.specs.protect[p.series].map((x) => <li key={x}><Icon name="shield" size={14} /> {x}</li>)}</ul>
 
           <div className="modal__buy">
             <button type="button" className="btn btn--primary btn--lg btn--block" onClick={ask}>
-              {t.modal.ask} <Icon name="arrow" size={18} />
+              {T.products.cta} <Icon name="arrow" size={18} />
             </button>
-            <p>{t.modal.askNote}</p>
+            <p>{T.modal.note}</p>
           </div>
         </div>
       </div>

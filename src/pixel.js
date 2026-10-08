@@ -1,4 +1,5 @@
-// Meta Pixel (Instagram reklamasi uchun). VITE_META_PIXEL_ID berilmasa hech narsa qilmaydi.
+// Meta Pixel (Instagram reklamasi uchun). PIXEL_ID berilmasa hech narsa qilmaydi.
+// Hodisalar: PageView — ochilganda, InitiateCheckout — model/diler narxi so‘ralganda (katalog, kalkulyator), Lead — ariza yuborilganda.
 import { CONFIG } from './config'
 
 export function initPixel() {
